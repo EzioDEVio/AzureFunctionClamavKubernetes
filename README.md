@@ -1,8 +1,8 @@
-### 🚀Azure Function with ClamAV in Kubernetes: Comprehensive Deployment Guide 🚀
+### ✨Azure Function with ClamAV in Kubernetes: Comprehensive Deployment Guide ✨
 
 This README elaborates on deploying an Azure Function integrated with ClamAV within a Kubernetes environment. We'll take you through containerizing your Azure Function, orchestrating its deployment alongside ClamAV in Kubernetes, addressing potential hitches, and optimizing the setup for efficient operation.
 
-Key Functionality Highlight:
+🌟Key Functionality Highlight:
 
 Azure Function with Blob Trigger: Our Azure Function is designed to react to new blob uploads in an Azure Storage container. Upon detecting a new blob, the function invokes ClamAV to scan the blob for potential threats.
 ClamAV Scanning: ClamAV, deployed within the same Kubernetes cluster, scans the incoming blobs. If it identifies any malicious content, the Azure Function is programmed to take necessary actions, such as deleting the questionable blob, thereby ensuring real-time threat mitigation.
@@ -18,19 +18,20 @@ Git: Manages version control for your source code.
 ```
 AzureFunctionClamAVKubernetes/
 │
-├── BlobScanFunctionApp/      # Azure Function application directory.
-│   ├── .vscode/              # VSCode specific settings.
-│   ├── bin/                  # Compiled binaries and other build artifacts.
-│   ├── obj/                  # Intermediate build outputs.
-│   ├── Properties/           # Contains project properties.
-│   └── ...                   # Other function app related files and directories.
+├── 📁 BlobScanFunctionApp/            # Azure Function app directory.
+│   ├── 📁 .vscode/                    # VSCode settings.
+│   ├── 📁 bin/                        # Build artifacts.
+│   ├── 📁 obj/                        # Build outputs.
+│   ├── 📁 Properties/                 # Project configurations.
+│   └── ...                            # Additional resources.
 │
-└── clamAV deployment/        # Directory containing Kubernetes deployment files.
-    ├── clamav-config.yaml    # ConfigMap for ClamAV configuration.
-    ├── clamav-deployment.yaml # Deployment definition for ClamAV.
-    ├── azurefunction-config.yaml # ConfigMap for Azure Function configuration.
-    ├── azurefunction-deployment.yaml # Deployment definition for Azure Function.
-    └── ...                   # Additional Kubernetes manifests (e.g., PVCs, Services).
+└── 📁 clamAV deployment/              # Kubernetes manifests for ClamAV & Azure Function.
+    ├── 📄 clamav-config.yaml          # ClamAV ConfigMap.
+    ├── 📄 clamav-deployment.yaml      # ClamAV deployment manifest.
+    ├── 📄 azurefunction-config.yaml   # Azure Function ConfigMap.
+    ├── 📄 azurefunction-deployment.yaml # Azure Function deployment manifest.
+    └── ...                            # Other necessary Kubernetes files.
+
 ```
 
 Detailed File Explanations 📑
