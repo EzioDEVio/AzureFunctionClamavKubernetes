@@ -45,28 +45,28 @@ AzureFunctionClamAVKubernetes/
 ***Detailed File Explanations and Descriptions*** 📑📑📑
 Kubernetes Deployment Files
 
-**clamav-configmap.yaml**:
+- **clamav-configmap.yaml**:
 This file defines a ConfigMap containing configuration settings for ClamAV. It separates the application configuration from the application logic, allowing for easier updates and management.
 
-**clamav-deployment.yaml**:
+- **clamav-deployment.yaml**:
 A Deployment manifest that specifies how ClamAV pods should be created, including details like the container image, resources, and volumes. It ensures that the desired number of ClamAV instances are maintained in the cluster.
 
-**function-configmap.yaml**:
+- **function-configmap.yaml**:
 Similar to the ClamAV ConfigMap, this provides configuration data for the Azure Function, allowing environment-specific settings to be managed independently of the application code.
 
-**function-secrets.yaml**:
+- **function-secrets.yaml**:
 This file manages sensitive information required by the Azure Function, such as API keys or passwords, ensuring that such data is kept secure and separate from other configuration data.
 
-**function-deployment.yaml**:
+- **function-deployment.yaml**:
 This Deployment manifest defines how the Azure Function pods should be created and managed within Kubernetes, detailing aspects like the container image, associated ConfigMaps or Secrets, and resource requirements.
 
-**clamav-pv.yaml**:
+- **clamav-pv.yaml**:
 Declares a Persistent Volume for ClamAV, providing it with a specific, durable storage resource that persists across pod restarts and rescheduling, essential for retaining ClamAV's state.
 
-**clamav-pvc.yaml**:
+- **clamav-pvc.yaml**:
 Specifies a Persistent Volume Claim for ClamAV, which requests and links the necessary storage resources defined in the PV to the ClamAV pods, ensuring they have the required storage available.
 
-**Each file contributes to setting up and managing the necessary components for the Azure Function and ClamAV deployment within a Kubernetes environment, focusing on configuration, security, and resource management**
+- **Each file contributes to setting up and managing the necessary components for the Azure Function and ClamAV deployment within a Kubernetes environment, focusing on configuration, security, and resource management**
 
 ---
 ## Deployment Steps 🚀
