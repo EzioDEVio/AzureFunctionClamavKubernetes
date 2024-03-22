@@ -15,6 +15,8 @@ Event-Driven Security: This setup exemplifies an event-driven approach to securi
 **kubectl**: A command-line tool for Kubernetes cluster management.
 **Azure CLI**: Facilitates interactions with Azure resources.
 **Git**: Manages version control for your source code.
+
+
 ---
 ## Project Structure 📂
 ```
