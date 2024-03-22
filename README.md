@@ -2,7 +2,7 @@
 
 This README elaborates on deploying an Azure Function integrated with ClamAV within a Kubernetes environment. We'll take you through containerizing your Azure Function, orchestrating its deployment alongside ClamAV in Kubernetes, addressing potential hitches, and optimizing the setup for efficient operation.
 
-🌟Key Functionality Highlight:
+#🌟Key Functionality Highlight:
 
 Azure Function with Blob Trigger: Our Azure Function is designed to react to new blob uploads in an Azure Storage container. Upon detecting a new blob, the function invokes ClamAV to scan the blob for potential threats.
 ClamAV Scanning: ClamAV, deployed within the same Kubernetes cluster, scans the incoming blobs. If it identifies any malicious content, the Azure Function is programmed to take necessary actions, such as deleting the questionable blob, thereby ensuring real-time threat mitigation.
