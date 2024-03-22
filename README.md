@@ -79,9 +79,9 @@ kubectl describe pod <azure-function-pod-name>
 
 # 4. Validate and Monitor
 Ensure both deployments are up and verify intercommunication.
-
 ```
 kubectl get pods
+```
 ```
 kubectl logs <pod_name>
 ```
