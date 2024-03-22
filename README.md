@@ -45,11 +45,30 @@ Azure Function App Directory
 Contains the source code and supporting files for the Azure Function. Key components include the function's logic, dependencies (package.json or similar), and any local settings or configurations.
 
 ## Deployment Steps 🚀
-# 1. Containerize the Azure Function
+# 1. Containerize the Azure Function:
 Dockerize your function app and push the image to a container registry.
+```
+docker build -t myazurefunction:latest .
+```
+# - Tagging the Image:
+```
+docker image tag myazurefunction:latest USER/myazurefunction:latest
+```
+# - Pushing to Docker Hub:
+```
+docker image push USER/myazurefunction:latest
+
+```
+
+# - Run the Docker Container
+```
+docker run -p 80:80 myazurefunction:latest
+```
+
 # 2. Set Up Kubernetes (Minikube)
 Initialize Minikube and configure kubectl to interact with the local cluster.
-# 3. Deploy ClamAV and Azure Function
+## 3. Deploy ClamAV and Azure Function
+
 Apply Kubernetes manifests to deploy ClamAV and the Azure Function within the cluster.
 
 ```
