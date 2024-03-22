@@ -1,0 +1,30 @@
+## General
+.DS_Store
+Thumbs.db
+
+## .NET Core
+bin/
+obj/
+out/
+.vs/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+## Visual Studio Code
+.vscode/
+
+## Kubernetes Secrets
+secrets.yaml
+
+## Temporary Files
+*tmp
+*temp
+*.tmp
+*.temp
+
+## Logs and databases
+*.log
+*.sql
+*.sqlite
