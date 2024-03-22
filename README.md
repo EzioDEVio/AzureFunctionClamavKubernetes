@@ -82,10 +82,11 @@ Ensure both deployments are up and verify intercommunication.
 
 ```
 kubectl get pods
+```
 kubectl logs <pod_name>
 ```
 
-Troubleshooting 🛠️
+# Troubleshooting 🛠️
 Address issues highlighted in pod logs or status. Common problems include image pull errors, configuration mismatches, or resource constraints.
 Maintenance and Upgrades 🔄
 Keep your deployment files and container images up-to-date. Regularly review Kubernetes resources and logs to optimize performance and security.
