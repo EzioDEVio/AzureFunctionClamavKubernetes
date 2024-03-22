@@ -82,7 +82,7 @@ docker image tag myazurefunction:latest USER/myazurefunction:latest
 # Pushing to Docker Hub:
 ```
 docker image push USER/myazurefunction:latest
-
+##### Replace yourdockerhubusername/azurefunctionimage:latest with the actual path to your Docker image.
 ```
 
 # Run the Docker Container
@@ -122,7 +122,7 @@ kubectl apply -f function-secrets.yaml
 kubectl apply -f function-deployment.yaml
 kubectl apply -f clamav-pv.yaml
 kubectl apply -f clamav-pvc.yaml
-##### Replace yourdockerhubusername/azurefunctionimage:latest with the actual path to your Docker image.
+
 ```
 #Check that all pods are running and services are functioning
 ```
