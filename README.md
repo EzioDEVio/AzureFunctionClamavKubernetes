@@ -72,7 +72,8 @@ kubectl get all
 # Verify the Deployment
 ```
 kubectl get pods
-``
+```
+```
 kubectl describe pod <azure-function-pod-name>
 ```
 
