@@ -11,9 +11,13 @@ Event-Driven Security: This setup exemplifies an event-driven approach to securi
 ## Prerequisites 🛠️
 
 **Docker**: Used for containerizing applications.
+
 **Kubernetes (Minikube)**: Provides a local Kubernetes cluster to deploy and test the application.
+
 **kubectl**: A command-line tool for Kubernetes cluster management.
+
 **Azure CLI**: Facilitates interactions with Azure resources.
+
 **Git**: Manages version control for your source code.
 
 
