@@ -34,7 +34,7 @@ AzureFunctionClamAVKubernetes/
 
 ```
 
-***Detailed File Explanations*** 📑📑📑
+***Detailed File Explanations and Descriptions*** 📑📑📑
 Kubernetes Deployment Files
 
 **clamav-configmap.yaml**:
