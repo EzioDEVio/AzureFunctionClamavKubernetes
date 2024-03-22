@@ -62,7 +62,7 @@ Specifies a Persistent Volume Claim for ClamAV, which requests and links the nec
 
 ---
 ## Deployment Steps 🚀
-# Containerize the Azure Function:
+# 1. Containerize the Azure Function:
 Dockerize your function app and push the image to a container registry.
 ```
 docker build -t myazurefunction:latest .
