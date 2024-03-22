@@ -91,7 +91,8 @@ Minikube provides a quick way to set up a local Kubernetes cluster for testing e
 -Start Minikube: Use minikube start to launch a local Kubernetes cluster.
 -Check Configuration: Use kubectl get nodes to ensure Minikube is up and kubectl is configured correctly.
 
-**Differences from Managed Kubernetes Platforms**💡:
+**Differences from Managed Kubernetes Platforms**🌐:
+
 Isolation: Minikube is local and isolated, contrasting with the networked nature of managed cloud Kubernetes services.
 Resources: Limited to your local machine's capabilities, unlike the scalable cloud-based offerings.
 Management: Lacks the advanced management features of cloud services but provides a simpler, more accessible environment.
