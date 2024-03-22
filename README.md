@@ -63,9 +63,7 @@ kubectl apply -f function-deployment.yaml
 kubectl apply -f clamav-pv.yaml
 kubectl apply -f clamav-pvc.yaml
 ##### Replace yourdockerhubusername/azurefunctionimage:latest with the actual path to your Docker image.
-
-
-
+```
 #Check that all pods are running and services are functioning
 ```
 kubectl get all
@@ -74,6 +72,7 @@ kubectl get all
 # Verify the Deployment
 ```
 kubectl get pods
+``
 kubectl describe pod <azure-function-pod-name>
 ```
 
