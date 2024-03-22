@@ -4,16 +4,18 @@ This README elaborates on deploying an Azure Function integrated with ClamAV wit
 
 🌟**Key Functionality Highlight**:
 
-Azure Function with Blob Trigger: Our Azure Function is designed to react to new blob uploads in an Azure Storage container. Upon detecting a new blob, the function invokes ClamAV to scan the blob for potential threats.
-ClamAV Scanning: ClamAV, deployed within the same Kubernetes cluster, scans the incoming blobs. If it identifies any malicious content, the Azure Function is programmed to take necessary actions, such as deleting the questionable blob, thereby ensuring real-time threat mitigation.
+**Azure Function with Blob Trigger**: Our Azure Function is designed to react to new blob uploads in an Azure Storage container. Upon detecting a new blob, the function invokes **ClamAV** to scan the blob for potential threats.
+ClamAV Scanning: ClamAV, deployed within the same **Kubernetes cluster**, scans the incoming blobs. If it identifies any malicious content, the Azure Function is programmed to take necessary actions, such as deleting the questionable blob, thereby ensuring real-time threat mitigation.
 Event-Driven Security: This setup exemplifies an event-driven approach to security, where blob uploads trigger immediate scans, minimizing the window of vulnerability.
 
-**Prerequisites** 🛠️
-Docker: Used for containerizing applications.
-Kubernetes (Minikube): Provides a local Kubernetes cluster to deploy and test the application.
-kubectl: A command-line tool for Kubernetes cluster management.
-Azure CLI: Facilitates interactions with Azure resources.
-Git: Manages version control for your source code.
+## Prerequisites 🛠️
+
+**Docker**: Used for containerizing applications.
+**Kubernetes (Minikube)**: Provides a local Kubernetes cluster to deploy and test the application.
+**kubectl**: A command-line tool for Kubernetes cluster management.
+**Azure CLI**: Facilitates interactions with Azure resources.
+**Git**: Manages version control for your source code.
+---
 ## Project Structure 📂
 ```
 AzureFunctionClamAVKubernetes/
