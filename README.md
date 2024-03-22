@@ -58,7 +58,7 @@ Declares a Persistent Volume for ClamAV, providing it with a specific, durable s
 **clamav-pvc.yaml**:
 Specifies a Persistent Volume Claim for ClamAV, which requests and links the necessary storage resources defined in the PV to the ClamAV pods, ensuring they have the required storage available.
 
-# Each file contributes to setting up and managing the necessary components for the Azure Function and ClamAV deployment within a Kubernetes environment, focusing on configuration, security, and resource management
+**Each file contributes to setting up and managing the necessary components for the Azure Function and ClamAV deployment within a Kubernetes environment, focusing on configuration, security, and resource management**
 
 ---
 ## Deployment Steps 🚀
