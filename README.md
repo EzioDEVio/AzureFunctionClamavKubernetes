@@ -81,7 +81,7 @@ docker image push USER/myazurefunction:latest
 ```
 docker run -p 80:80 myazurefunction:latest
 ```
-
+---
 # 2. Set Up Kubernetes (Minikube)
 Initialize Minikube and configure kubectl to interact with the local cluster.
 ## 3. Deploy ClamAV and Azure Function
