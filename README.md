@@ -83,7 +83,19 @@ docker run -p 80:80 myazurefunction:latest
 ```
 ---
 # 2. Set Up Kubernetes (Minikube)
-Initialize Minikube and configure kubectl to interact with the local cluster.
+Minikube provides a quick way to set up a local Kubernetes cluster for testing environments. It's ideal for development and testing, offering a simplified version of larger, managed Kubernetes platforms.
+
+Installation and Initialization:
+Install Minikube: Follow the Minikube installation guide.
+Start Minikube: Use minikube start to launch a local Kubernetes cluster.
+Check Configuration: Use kubectl get nodes to ensure Minikube is up and kubectl is configured correctly.
+Differences from Managed Kubernetes Platforms:
+Isolation: Minikube is local and isolated, contrasting with the networked nature of managed cloud Kubernetes services.
+Resources: Limited to your local machine's capabilities, unlike the scalable cloud-based offerings.
+Management: Lacks the advanced management features of cloud services but provides a simpler, more accessible environment.
+Cost: Free to use, making it an economical choice for developers.
+This setup ensures you have a functional, isolated environment to deploy and test your Kubernetes applications locally before moving to a production-grade setup.
+---
 ## 3. Deploy ClamAV and Azure Function
 
 Apply Kubernetes manifests to deploy ClamAV and the Azure Function within the cluster.
@@ -112,7 +124,7 @@ kubectl get pods
 ```
 kubectl describe pod <azure-function-pod-name>
 ```
-
+---
 # 4. Validate and Monitor
 Ensure both deployments are up and verify intercommunication.
 ```
