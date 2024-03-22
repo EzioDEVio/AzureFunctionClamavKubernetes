@@ -1,0 +1,59 @@
+
+# function-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azurefunction-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azurefunction
+  template:
+    metadata:
+      labels:
+        app: azurefunction
+    spec:
+      containers:
+      - name: azurefunction
+        image: ezio22/myazurefunctionapp:latest
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
+        env:
+        - name: AzureWebJobsStorage
+          valueFrom:
+            secretKeyRef:
+              name: function-secrets
+              key: AzureWebJobsStorage
+        - name: FUNCTIONS_WORKER_RUNTIME
+          valueFrom:
+            configMapKeyRef:
+              name: function-config
+              key: FUNCTIONS_WORKER_RUNTIME
+        - name: BLOB_CONTAINER_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: function-config
+              key: BLOB_CONTAINER_NAME
+        - name: CLAMAV_SERVICE_NAME
+          value: "clamav-service"
+        - name: CLAMAV_SERVICE_PORT
+          value: "3310"
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azurefunction-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: azurefunction

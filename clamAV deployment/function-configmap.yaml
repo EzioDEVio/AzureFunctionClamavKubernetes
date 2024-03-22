@@ -1,0 +1,10 @@
+
+# function-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: function-config
+data:
+  FUNCTIONS_WORKER_RUNTIME: dotnet
+  BLOB_CONTAINER_NAME: pre-scan-blob
+  # Add other non-sensitive configuration data as needed

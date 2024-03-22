@@ -1,0 +1,17 @@
+# clamav-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: clamav-config
+data:
+  freshclam.conf: |
+    # Check for new database 24 times a day
+    Checks 24
+    # Official ClamAV mirror
+    DatabaseMirror database.clamav.net
+  clamd.conf: |
+    # Accept connections on port 3310
+    TCPSocket 3310
+    TCPAddr 0.0.0.0
+    # Disable verbose logging
+    LogVerbose false

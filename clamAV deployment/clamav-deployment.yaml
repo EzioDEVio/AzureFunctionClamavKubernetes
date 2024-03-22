@@ -1,0 +1,49 @@
+
+# clamav-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clamav-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clamav
+  template:
+    metadata:
+      labels:
+        app: clamav
+    spec:
+      containers:
+      - name: clamav
+        image: clamav/clamav:latest
+        ports:
+        - containerPort: 3310
+        resources:
+          requests:
+            cpu: "500m" # Reduced to 500m to prevent CPU starvation
+            memory: "1.5Gi" # Increased to 1.5Gi to provide more memory
+          limits:
+            cpu: "1500m" # Increased to 1500m (1.5 CPU cores) to allow bursts
+            memory: "2Gi" # Increased to 2Gi to prevent OOMKills
+        livenessProbe:
+          tcpSocket:
+            port: 3310
+          initialDelaySeconds: 45
+          periodSeconds: 20
+          failureThreshold: 10
+
+        readinessProbe:
+          tcpSocket:
+            port: 3310
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          failureThreshold: 10
+
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/clamav
+      volumes:
+      - name: config-volume
+        configMap:
+          name: clamav-config
