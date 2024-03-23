@@ -6,11 +6,14 @@ on:
       - main
 
 jobs:
-  scan:
+  trivy_scan:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+
+      - name: Prepare report file
+        run: touch trivy-image-report.txt
 
       - name: Run Trivy vulnerability scanner on Docker image
         uses: aquasecurity/trivy-action@master
@@ -18,15 +21,21 @@ jobs:
           scan-type: 'image'
           image-ref: 'ezio22/myazurefunctionapp:latest'
           format: 'table'
-          exit-code: '1'  # Non-zero exit code if vulnerabilities are found
-          ignore-unfixed: false  # Include unfixed vulnerabilities
+          exit-code: '1'
+          ignore-unfixed: false
           severity: 'MEDIUM,HIGH,CRITICAL'
           output: 'trivy-image-report.txt'
 
       - name: Display Trivy scan results
-        run: cat trivy-image-report.txt || echo "Trivy report is empty or not found."
+        run: |
+          if [ -s trivy-image-report.txt ]; then
+            cat trivy-image-report.txt
+          else
+            echo "Trivy report is empty."
+          fi
 
       - name: Upload Trivy scan results
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: trivy-report
