@@ -15,15 +15,16 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Run Trivy vulnerability scanner and output to file
+      - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           format: 'table'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          input: '.'
           output: 'trivy-report.txt'
+          vuln-type: 'os,library'
+          severity: 'HIGH,CRITICAL'
+          path: '.'
+
 
       - name: Upload Trivy scan results
         uses: actions/upload-artifact@v2
