@@ -23,7 +23,7 @@ jobs:
           vuln-type: 'os,library'
           severity: 'HIGH,CRITICAL'
           output: 'trivy-report.txt'
-          input: '.'
+          
 
       - name: Display Trivy Scan Report
         run: cat trivy-report.txt || echo "Trivy report is empty or not found."
