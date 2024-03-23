@@ -22,7 +22,7 @@ jobs:
         with:
           context: ./BlobScanFunctionApp
           file: ./BlobScanFunctionApp/Dockerfile
-          tags: yourusername/yourimage:latest
+          tags: ezio22/yourimage:latest
           load: true  # Load the built image into  the Docker daemon for scanning once is complete
 
       - name: Install Trivy vulnerability scanner
