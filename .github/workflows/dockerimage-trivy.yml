@@ -19,14 +19,15 @@ jobs:
           image-ref: 'ezio22/myazurefunctionapp:latest'
           format: 'table'
           exit-code: '1'  # Non-zero exit code if vulnerabilities are found
-          ignore-unfixed: true
-          severity: 'HIGH,CRITICAL'
+          ignore-unfixed: false  # Include unfixed vulnerabilities
+          severity: 'MEDIUM,HIGH,CRITICAL'
           output: 'trivy-image-report.txt'
+
+      - name: Display Trivy scan results
+        run: cat trivy-image-report.txt || echo "Trivy report is empty or not found."
 
       - name: Upload Trivy scan results
         uses: actions/upload-artifact@v2
         with:
           name: trivy-report
           path: trivy-image-report.txt
-
-
