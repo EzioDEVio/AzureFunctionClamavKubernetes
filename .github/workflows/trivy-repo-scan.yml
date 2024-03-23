@@ -23,7 +23,6 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           severity: 'HIGH,CRITICAL'
-          input: '.'
           output: 'trivy-report.txt'
 
       - name: Upload Trivy scan results
