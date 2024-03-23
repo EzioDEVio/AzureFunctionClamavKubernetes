@@ -1,6 +1,6 @@
 name: Minikube CI
 
-# Disable automatic triggers by commenting out
+# was intentionally disabled for automatic triggers by commenting out, uncomment to start the workflow
 # on: [push]
 
 # Enable workflow_dispatch to allow manual triggers from GitHub U
