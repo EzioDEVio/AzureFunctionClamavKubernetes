@@ -1,36 +1,36 @@
-name: Trivy Repository Scan
+name: Trivy Scan and Report
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 jobs:
-  trivy-repo-scan:
+  trivy_scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repository
+      - name: Check out the repository
         uses: actions/checkout@v2
-
-      - name: Run Trivy Vulnerability Scanner
+      
+      - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           format: 'table'
-          output: 'trivy-full-report.txt'
+          exit-code: '1'
+          ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'HIGH,CRITICAL'
-          path: '.'
+          output: 'trivy-report.txt'
+          input: '.'
 
+      - name: Display Trivy Scan Report
+        run: cat trivy-report.txt || echo "Trivy report is empty or not found."
 
-      - name: Upload Trivy scan results
+      - name: Upload Trivy scan report
+        if: success() && github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v2
         with:
           name: trivy-report
           path: trivy-report.txt
-
-      - name: Display the scan results
-        run: cat trivy-report.txt
