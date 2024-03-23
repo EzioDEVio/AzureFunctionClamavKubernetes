@@ -25,7 +25,7 @@ jobs:
           ignore-unfixed: true
           severity: 'HIGH,CRITICAL'
           output: 'trivy-report.txt'
-          input: '.'
+          
 
       - name: Check Trivy report content
         run: |
