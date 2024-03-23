@@ -1,4 +1,4 @@
-name: Build, Push and Scan Docker Image
+name: Scan Docker Image with Trivy
 
 on:
   push:
@@ -6,25 +6,13 @@ on:
       - main
 
 jobs:
-  build-push-scan:
+  scan:
     runs-on: ubuntu-latest
     steps:
     - name: Check out the repo
       uses: actions/checkout@v2
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Build the Docker image
-      run: docker build . -t ezio22/myazurefunctionapp:latest
-
-    - name: Push the Docker image
-      run: docker push ezio22/myazurefunctionapp:latest
-
-    - name: Run Trivy vulnerability scanner on built image
+    - name: Run Trivy vulnerability scanner on Docker Hub image
       uses: aquasecurity/trivy-action@master
       with:
         scan-type: 'image'
