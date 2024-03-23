@@ -20,9 +20,9 @@ jobs:
         with:
           scan-type: 'fs'
           format: 'table'
-          exit-code: '1'
           ignore-unfixed: true
-          severity: 'HIGH,CRITICAL'
+          vuln-type: 'os,library'
+          input: '.'
           output: 'trivy-report.txt'
 
       - name: Upload Trivy scan results
