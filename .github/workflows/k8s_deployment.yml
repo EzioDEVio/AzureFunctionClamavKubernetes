@@ -1,0 +1,36 @@
+name: Minikube CI
+
+# Disable automatic triggers by commenting out
+# on: [push]
+
+# Enable workflow_dispatch to allow manual triggers from GitHub U
+jobs:
+  minikube-setup:
+    runs-on: ubuntu-latest
+    env:
+      KUBECONFIG: ${{ github.workspace }}/.kube/config
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Install Minikube
+        run: |
+          curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+          sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+      - name: Start Minikube
+        run: |
+          minikube start --driver=none
+          minikube status
+
+      - name: Set up Kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
+          export KUBECONFIG=$HOME/.kube/config
+
+      - name: Interact with Minikube
+        run: |
+          kubectl get pods -A
+          kubectl get nodes
+          kubectl get services
