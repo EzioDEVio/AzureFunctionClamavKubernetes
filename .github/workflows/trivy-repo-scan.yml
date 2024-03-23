@@ -9,27 +9,28 @@ on:
       - main
 
 jobs:
-  trivy_scan:
+  trivy-repo-scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Set up Trivy vulnerability scanner
+      - name: Run Trivy vulnerability scanner and output to file
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
-          input: './'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
           severity: 'HIGH,CRITICAL'
+          input: '.'
+          output: 'trivy-report.txt'
 
-      - name: Run Trivy vulnerability scanner
-        run: trivy fs --exit-code 1 --no-progress --severity HIGH,CRITICAL ./ > trivy-report.txt
-
-      - name: Upload Trivy Scan Report
+      - name: Upload Trivy scan results
         uses: actions/upload-artifact@v2
         with:
           name: trivy-report
           path: trivy-report.txt
+
+      - name: Display the scan results
+        run: cat trivy-report.txt
