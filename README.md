@@ -1,4 +1,5 @@
-[![Trivy Scan and Report](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/trivy-repo-scan.yml/badge.svg)](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/trivy-repo-scan.yml) [![Build and Push Docker image](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/dockerize-function-app.yml/badge.svg)](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/dockerize-function-app.yml)
+[![Trivy Scan and Report](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/trivy-repo-scan.yml/badge.svg)](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/trivy-repo-scan.yml) [![Build and Push Docker image](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/dockerize-function-app.yml/badge.svg)](https://github.com/theslash84/AzureFunctionClamavKubernetes/actions/workflows/dockerize-function-app.yml) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/theslash84/AzureFunctionClamavKubernetes)
+
 
 ### ✨Azure Function with ClamAV in Kubernetes: Comprehensive Deployment Guide ✨
 
