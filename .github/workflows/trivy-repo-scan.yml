@@ -20,7 +20,7 @@ jobs:
         with:
           scan-type: 'fs'
           format: 'table'
-          output: 'trivy-report.txt'
+          output: 'trivy-full-report.txt'
           vuln-type: 'os,library'
           severity: 'HIGH,CRITICAL'
           path: '.'
