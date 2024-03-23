@@ -14,7 +14,7 @@ namespace Scan.Function
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name: {name} Size: {myBlob.Length} Bytes");
 
-            // Retrieve the ClamAV service details from environment variables
+            // this section Retrieve the ClamAV service details from environment variables 
             string serverName = Environment.GetEnvironmentVariable("CLAMAV_SERVICE_NAME") ?? "clamav-service";
             int serverPort = int.Parse(Environment.GetEnvironmentVariable("CLAMAV_SERVICE_PORT") ?? "3310");
 
