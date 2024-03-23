@@ -145,6 +145,34 @@ kubectl get pods
 ```
 kubectl logs <pod_name>
 ```
+## Automating Deployment with GitHub Actions 🚀
+GitHub Actions enables automation of your workflows, allowing you to execute your deployment pipeline right from your GitHub repository. Below, we outline how to set up workflows for the BlobFunction app and the Minikube cluster.
+
+# Setting Up Workflow for the BlobFunction App
+Create a Workflow File:
+
+Navigate to the .github/workflows directory in your repository.
+Create a new file named blobfunction-app.yml.
+Define your workflow using the YAML syntax, specifying triggers, jobs, steps, and actions.
+Define the Workflow:
+
+# Setting Up Workflow for Minikube
+Create a Workflow File for Minikube:
+
+In the .github/workflows directory, create a file named minikube-deployment.yml.
+Structure your workflow to include Minikube installation, cluster setup, and application deployment steps.
+Define Minikube Workflow:
+
+Ensure the workflow installs Minikube, starts the cluster, and applies Kubernetes manifests.
+Use actions that interact with Minikube, such as setting up kubectl and applying your deployment YAML files.
+Workflow Example:
+
+Set up the workflow to trigger on push events to your repository or on pull request events to specific branches.
+Define a job that checks out your code, sets up the environment, builds the container image, and pushes it to a container registry.
+Final Notes
+Commit and push your workflow files to the repository. GitHub Actions will automatically recognize and execute the workflows based on the defined triggers.
+Monitor the Actions tab in your GitHub repository to track the execution status and view logs.
+By integrating these workflows, you streamline the deployment processes for your BlobFunction app and Minikube environment, ensuring consistent and automated update
 
 # Troubleshooting 🛠️
 Address issues highlighted in pod logs or status. Common problems include image pull errors, configuration mismatches, or resource constraints.
