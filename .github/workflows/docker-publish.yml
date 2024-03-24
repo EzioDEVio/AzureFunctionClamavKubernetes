@@ -1,22 +1,36 @@
-name: Build and Push Docker image
+name: Docker Build and Push to GHCR
 
 on:
   push:
     branches:
-      - main
+      - main  # or any other branch you want to trigger your workflow
+    paths:
+      - 'BlobScanFunctionApp/**'  # This ensures the workflow only runs if there are changes in the specified path
 
 jobs:
-  build-and-push:
+  docker-build-and-push:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: read
+      packages: write
+
     steps:
-    - name: Check out the repository
+    - name: Check out the repo
       uses: actions/checkout@v2
-      
+
     - name: Log in to GitHub Container Registry
-      run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      
-    - name: Build and push Docker image
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.CR_PAT }}  # Make sure to set CR_PAT in your repository secrets
+
+    - name: Build the Docker image
       run: |
-        docker build . -t ghcr.io/${{ github.repository_owner }}/my-app:${{ github.sha }}
+        docker build -t ghcr.io/${{ github.repository_owner }}/my-app:${{ github.sha }} -f BlobScanFunctionApp/Dockerfile BlobScanFunctionApp/
+
+    - name: Push the Docker image to GHCR
+      run: |
         docker push ghcr.io/${{ github.repository_owner }}/my-app:${{ github.sha }}
+
+    # Any additional steps like deployment can be added here.
