@@ -29,4 +29,5 @@ jobs:
         context: BlobScanFunctionApp/
         file: BlobScanFunctionApp/Dockerfile
         push: true
-        tags: ghcr.io/theslash84/AzureFunctionClamavKubernetes:${{ github.sha }}
+        tags: ghcr.io/theslash84/azurefunctionclamavkubernetes:${{ github.sha }}
+
