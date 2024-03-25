@@ -82,17 +82,17 @@ Dockerize your function app and push the image to a container registry.
 ```
 docker build -t myazurefunction:latest .
 ```
-# Tagging the Image:
+Tagging the Image:
 ```
 docker image tag myazurefunction:latest USER/myazurefunction:latest
 ```
-# Pushing to Docker Hub:
+Pushing to Docker Hub:
 ```
 docker image push USER/myazurefunction:latest
 ##### Replace yourdockerhubusername/azurefunctionimage:latest with the actual path to your Docker image.
 ```
 
-# Run the Docker Container
+Run the Docker Container
 ```
 docker run -p 80:80 myazurefunction:latest
 ```
