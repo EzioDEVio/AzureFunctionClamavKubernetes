@@ -20,7 +20,7 @@ jobs:
       - name: Setup .NET 6
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.x'  # Make sure this matches your project's .NET version
+          dotnet-version: '6.0.x'  # Ensure this matches your project's .NET version
 
       - name: Setup Java 17  # SonarScanner requires Java
         uses: actions/setup-java@v2
@@ -40,7 +40,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           export PATH="$HOME/.dotnet/tools:$PATH"
-          dotnet sonarscanner begin /k:"eziodevio_AzureFunctionClamavKubernetes" /o:"theslash84" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.branch.name=main
+          dotnet sonarscanner begin /k:"theslash84_AzureFunctionClamavKubernetes" /o:"theslash84" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.branch.name=main
 
       - name: Build Project
         run: dotnet build
