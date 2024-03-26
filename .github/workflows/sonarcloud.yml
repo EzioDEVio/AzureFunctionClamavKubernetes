@@ -11,7 +11,6 @@ on:
 
 jobs:
   build-and-analyze:
-    name: Build and Analyze with SonarCloud
     runs-on: ubuntu-latest
 
     steps:
@@ -21,24 +20,27 @@ jobs:
       - name: Setup .NET 6
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.x'  # Ensuring compatibility with .NET 6
+          dotnet-version: '6.0.x'  # Make sure this matches your project's .NET version
 
-      - name: Setup Java 17  # Setting up Java 17 for SonarScanner
+      - name: Setup Java 17  # SonarScanner requires Java
         uses: actions/setup-java@v2
         with:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Install SonarScanner for .NET
+        run: dotnet tool install --global dotnet-sonarscanner
+      
+      - name: Add SonarScanner to PATH
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
       - name: Begin SonarCloud Analysis
         env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: >
-         dotnet sonarscanner begin /k:"eziodevio" /o:"eziodevio"
-         /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-         /d:sonar.host.url="https://sonarcloud.io"
-         /d:sonar.branch.name=main
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          dotnet sonarscanner begin /k:"eziodevio" /o:"eziodevio" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.branch.name=main
 
       - name: Build Project
         run: dotnet build
@@ -46,5 +48,6 @@ jobs:
       - name: End SonarCloud Analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-
+        run: |
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
