@@ -21,7 +21,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1'  # Replace with the .NET version used in your Azure Functions project
+          dotnet-version: '3.1'  # **Replace with the .NET version used in your Azure Functions project
 
       - name: Install SonarScanner for .NET
         run: dotnet tool install --global dotnet-sonarscanner
