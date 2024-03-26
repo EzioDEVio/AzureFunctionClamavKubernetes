@@ -23,6 +23,12 @@ jobs:
         with:
           dotnet-version: '6.0.x'  # Ensuring compatibility with .NET 6
 
+      - name: Setup Java 17  # Setting up Java 17 for SonarScanner
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
       - name: Install SonarScanner for .NET
         run: dotnet tool install --global dotnet-sonarscanner
 
