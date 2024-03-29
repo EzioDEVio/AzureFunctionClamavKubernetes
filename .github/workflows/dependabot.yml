@@ -1,0 +1,26 @@
+
+version: 2
+updates:
+  # Enable version updates for NuGet
+  - package-ecosystem: "nuget"
+    # Directory where your .csproj or .sln files are located
+    directory: "/"
+    # Check the 'nuget' package manager for updates every week
+    schedule:
+      interval: "weekly"
+
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    # Directory where package.json and package-lock.json are located
+    directory: "/"
+    # Check the 'npm' package manager for updates every week
+    schedule:
+      interval: "weekly"
+
+  # Enable version updates for pip
+  - package-ecosystem: "pip"
+    # Directory where requirements.txt or Pipfile.lock is located
+    directory: "/"
+    # Check the 'pip' package manager for updates every week
+    schedule:
+      interval: "weekly"
